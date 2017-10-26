@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">PopularCars</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_browse_cars">BrowseCarsActivity</string>
+    <string name="title_ativity_search_cars">SearchCarsActivity</string>
+    <string name="title_activity_car_info">CarInfoActivity</string>
+    <string name="general_upper_one">We are on a mission to make the used car buying and selling process painless and want to help you every step of the way. Check out the following sections and, if you still cannot find what you need, feel free to contact us at your nearest location.</string>
+    <string name="general_upper_two">Do write to us with your comments and suggestions. We look forward to hearing from you!</string>
+    <string name="question">Question:</string>
+    <string name="answer">Answer:</string>
+</resources>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="Home" />
+        <!--<item-->
+            <!--android:id="@+id/nav_special_offers"-->
+            <!--android:icon="@drawable/ic_menu_sepcialoffers"-->
+            <!--android:title="Special Offers" />-->
+        <item
+            android:id="@+id/nav_browse_cars"
+            android:icon="@drawable/ic_menu_browsecars"
+            android:title="Browse Cars" />
+    </group>
+
+        <item android:title="Buyers Guide">
+
+       <menu>
+            <item
+                android:id="@+id/tips"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Tips for buying" />
+            <item
+                android:id="@+id/inspect"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Inspection" />
+            <item
+                android:id="@+id/test"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Test drive" />
+            <item
+                android:id="@+id/deal_close"
+                android:icon="@drawable/ic_menu_manage"
+                android:title=" Close the deal" />
+       </menu>
+        </item>
+
+    <item android:title="Finance">
+        <menu>
+            <item
+                android:id="@+id/nav_inhousefinance"
+                android:icon="@drawable/ic_menu_finance"
+                android:title="In-House Finance" />
+            <item
+                android:id="@+id/nav_3rdpartyfinance"
+                android:icon="@drawable/ic_menu_thirdpartyfinance"
+                android:title="3rd Party Finance" />
+        </menu>
+    </item>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_contact_page"
+                android:icon="@drawable/ic_contact_phone_black_24dp"
+                android:title="Contact Us" />
+        </menu>
+    </item>
+
+    <item android:title="FAQ">
+        <menu>
+
+        <item
+            android:id="@+id/general"
+            android:icon="@drawable/ic_menu_share"
+            android:title="General" />
+
+        <item
+            android:id="@+id/carLoan"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Car Loan" />
+        </menu>
+    </item>
+
+</menu>

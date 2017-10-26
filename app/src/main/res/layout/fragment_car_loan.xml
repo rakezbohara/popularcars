@@ -1,0 +1,25 @@
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!-- List View -->
+    <android.support.v7.widget.RecyclerView
+    android:id="@+id/rvItems"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    />
+
+
+
+
+    </RelativeLayout>
+
+
+
+</ScrollView>

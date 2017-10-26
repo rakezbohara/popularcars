@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#e20613</color>
+    <color name="colorPrimaryDark">#b7191f</color>
+    <color name="colorAccent">#e20613</color>
+    <color name="logoRed">#e20613</color>
+    <color name="scrollViewBackground">#f4f4f4</color>
+    <color name="textHeadingColor">#313131</color>
+    <color name="light_grey">#e6e6e6</color>
+    <color name="transparent">#ffffff</color>
+
+</resources>
