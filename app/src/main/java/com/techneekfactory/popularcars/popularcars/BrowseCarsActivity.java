@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -44,6 +45,7 @@ public class BrowseCarsActivity extends AppCompatActivity implements CarsCardCli
     private CarsCustomAdapter carsCustomAdapter;
     private List<Vehicles> vehiclesList;
     private TextView noResultsTV;
+    private ProgressBar browseCarsProgress;
 
 
     private String carBrandID = "0";
@@ -55,7 +57,7 @@ public class BrowseCarsActivity extends AppCompatActivity implements CarsCardCli
     private String fuelType = "0";
 
 
-    private Boolean showFeatured = false;
+//    private Boolean showFeatured = false;
 
     private Spinner brandSpinner, bodyTypeSpinner, budgetSpinner, kilometerSpinner, carAgeSpinner, fuelTypeSpinner, transmissionSpinner;
 
@@ -111,6 +113,7 @@ public class BrowseCarsActivity extends AppCompatActivity implements CarsCardCli
         fuelTypeSpinner = (Spinner) findViewById(R.id.fuelTypeSpinner);
         transmissionSpinner = (Spinner) findViewById(R.id.transmissionSpinner);
 
+        browseCarsProgress = (ProgressBar) findViewById(R.id.browseCarsProgress);
         //Brand Filter
         brandKV = new LinkedHashMap<>();
         loadBrandKV();
@@ -182,8 +185,8 @@ public class BrowseCarsActivity extends AppCompatActivity implements CarsCardCli
         budgetKVAdapter = new LinkedHashMapAdapter<String, String>(this, android.R.layout.simple_spinner_item, budgetKV);
         budgetKVAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        budgetSpinner.setAdapter(budgetKVAdapter);
-        budgetSpinner.setOnItemSelectedListener(budgetSpinnerItemSelected);
+//        budgetSpinner.setAdapter(budgetKVAdapter);
+//        budgetSpinner.setOnItemSelectedListener(budgetSpinnerItemSelected);
 
 
         //KiloMeter Filter
@@ -251,32 +254,71 @@ public class BrowseCarsActivity extends AppCompatActivity implements CarsCardCli
         String type = "0";
         String brand = "0";
         String bodytype = "0";
-        String featuredString = bundle.getString("FEATUREDCARS");
+        String price = "0";
+        String pricelabel = "0";
+//        String featuredString = bundle.getString("FEATUREDCARS");
         type = bundle.getString("type");
         brand = bundle.getString("brand");
         bodytype = bundle.getString("bodyType");
+        price = bundle.getString("budget");
+        pricelabel = bundle.getString("priceLabel");
+
+        try{
+
         if (type.equals("brand")){
             brandSpinner.setVisibility(View.GONE);
+            budgetSpinner.setAdapter(budgetKVAdapter);
+            budgetSpinner.setOnItemSelectedListener(budgetSpinnerItemSelected);
             setTitle("Brand:" + brand);
         }
-        if (type.equals("0") && brand.equals("0") && bodytype.equals("0")){
+        if (type.equals("0") && brand.equals("0") && bodytype.equals("0") ){
             System.out.println("hi");
             setTitle("Browse Cars");
+
+
+
+//            budgetSpinner.setAdapter(budgetKVAdapter);
+//            budgetSpinner.setOnItemSelectedListener(budgetSpinnerItemSelected);
+
+
+
+
         }
         if (type.equals("body")){
             bodyTypeSpinner.setAdapter(brandKVAdapter);
+            bodyTypeSpinner.setOnItemSelectedListener(brandSpinnerItemSelected);
+            budgetSpinner.setAdapter(budgetKVAdapter);
+            budgetSpinner.setOnItemSelectedListener(budgetSpinnerItemSelected);
             brandSpinner.setVisibility(View.GONE);
+
             setTitle("Body:" + bodytype);
 //            budgetSpinner.setAdapter(brandKVAdapter);
         }
 
-        try {
-            if (featuredString != null) {
-                showFeatured = true;
+            if (type.equals("price")){
+                brandSpinner.setVisibility(View.GONE);
+//                bodyTypeSpinner.setAdapter(brandKVAdapter);
+
+                setTitle("Price:" + pricelabel);
+                bodyTypeSpinner.setAdapter(brandKVAdapter);
+                bodyTypeSpinner.setOnItemSelectedListener(brandSpinnerItemSelected);
+
+                budgetSpinner.setAdapter(bodyTypeKVAdapter);
+                budgetSpinner.setOnItemSelectedListener(bodyTypeSpinnerItemSelected);
+//            budgetSpinner.setAdapter(brandKVAdapter);
             }
-        } catch (Error ignored) {
+
+
+        }catch (Error error){
 
         }
+//        try {
+//            if (featuredString != null) {
+//                showFeatured = true;
+//            }
+//        } catch (Error ignored) {
+//
+//        }
 
 
         carBrandID = bundle.getString("brandID");
@@ -537,12 +579,14 @@ Log.d("SEARCHMODE ", String.valueOf(searchMode));
 
         vehiclesList.clear();
         noResultsTV.setVisibility(View.INVISIBLE);
+        browseCarsProgress.setVisibility(View.VISIBLE);
 
         //Get the Featured Cars
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLEndpoints.GateWayEndPointURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
 
                         String status, message, customerID, fullName, mobileNumber, password, language, mobileNumberVerified, active;
 
@@ -575,6 +619,7 @@ Log.d("SEARCHMODE ", String.valueOf(searchMode));
                                 }
 
                                 carsCustomAdapter.notifyDataSetChanged();
+                                browseCarsProgress.setVisibility(View.INVISIBLE);
 
                                 Log.d("FeaturedList", vehiclesList.toString() + " -- " + vehiclesList.size());
 
@@ -611,9 +656,9 @@ Log.d("SEARCHMODE ", String.valueOf(searchMode));
 
                 params.put("action", "ALLCARS");
 
-                if (showFeatured) {
-                    params.put("featured", "featured");
-                }
+//                if (showFeatured) {
+//                    params.put("featured", "featured");
+//                }
 
                 if (!carBrandID.equals("0")) {
                     params.put("makeID", carBrandID);

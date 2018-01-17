@@ -1,6 +1,7 @@
 package com.techneekfactory.popularcars.popularcars;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -26,6 +27,7 @@ import com.android.volley.toolbox.Volley;
 import com.techneekfactory.popularcars.popularcars.extras.SpecialOffers;
 import com.techneekfactory.popularcars.popularcars.extras.URLEndpoints;
 import com.techneekfactory.popularcars.popularcars.extras.Vehicles;
+import com.techneekfactory.popularcars.popularcars.FeaturedListActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,10 +45,13 @@ public class MainFragment extends Fragment implements  CarsCardClickListener{
 
 
 
+    private Context context;
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
     private TextView seeAllFeaturedButton;
+    private TextView seeAllLatestButton;
 
     private RecyclerView recyclerView;
     private RecyclerView latestCarsRecycleView;
@@ -99,36 +104,46 @@ public class MainFragment extends Fragment implements  CarsCardClickListener{
             @Override
             public void onClick(View view) {
                 // Start NewActivity.class
-                Intent myIntent = new Intent(getContext(), BrowseCarsActivity.class);
-                myIntent.putExtra("FEATUREDCARS", "YES");
+
+
+                Intent myIntent = new Intent(getContext(),FeaturedListActivity.class);
+                myIntent.putExtra("FEATUREDCAROnly", "YES");
 
 
                 startActivity(myIntent);
             }
         });
+        seeAllLatestButton = v.findViewById(R.id.seeAllLatestButton);
+        seeAllLatestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Start NewActivity.class
 
 
+                Intent myIntent = new Intent(getContext(),LatestListActivity.class);
+                myIntent.putExtra("LatestCAROnly", "Hey");
 
 
-
-
+                startActivity(myIntent);
+            }
+        });
         recyclerView = (RecyclerView) v.findViewById(R.id.featuredCarsRecycleView);
         latestCarsRecycleView = (RecyclerView) v.findViewById(R.id.latestCarsRecycleView);
-        specialOffersRecycleView = (RecyclerView) v.findViewById(R.id.specialOffersRecycleView);
+        //specialOffersRecycleView = (RecyclerView) v.findViewById(R.id.specialOffersRecycleView);
 
         vehiclesList = new ArrayList<>();
         latestVehiclesList = new ArrayList<>();
-        specialOffersList = new ArrayList<>();
+        //specialOffersList = new ArrayList<>();
 
 
-        progressBarSpecial = (ProgressBar) v.findViewById(R.id.progressBarSpecial);
+        //progressBarSpecial = (ProgressBar) v.findViewById(R.id.progressBarSpecial);
         progressBarFeatured = (ProgressBar)  v.findViewById(R.id.progressBarFeatured);
         progressBarLatest = (ProgressBar) v.findViewById(R.id.progressBarLatest);
 
 
 
 
-        loadSpecialOffers();
+        //loadSpecialOffers();
         loadFeaturedVehicles();
         loadLatestVehicles();
 
@@ -141,21 +156,21 @@ public class MainFragment extends Fragment implements  CarsCardClickListener{
         latestCarsGridLayoutManager.setSpanCount(1);
         latestCarsGridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 
-        specialOffersGridLayoutManager = new GridLayoutManager(this.getContext(), 1);
+        /*specialOffersGridLayoutManager = new GridLayoutManager(this.getContext(), 1);
         specialOffersGridLayoutManager.setSpanCount(1);
-        specialOffersGridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        specialOffersGridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);*/
 
         recyclerView.setLayoutManager(gridLayoutManager);
         latestCarsRecycleView.setLayoutManager(latestCarsGridLayoutManager);
-        specialOffersRecycleView.setLayoutManager(specialOffersGridLayoutManager);
+        //specialOffersRecycleView.setLayoutManager(specialOffersGridLayoutManager);
 
         carsCustomAdapter = new CarsCustomAdapter(this.getContext(), vehiclesList, true);
         latestCarsCustomAdapter = new CarsCustomAdapter(this.getContext(), latestVehiclesList, true);
-        offersCustomAdapter = new OffersCustomAdapter(this.getContext(), specialOffersList, true);
+        //offersCustomAdapter = new OffersCustomAdapter(this.getContext(), specialOffersList, true);
 
         recyclerView.setAdapter(carsCustomAdapter);
         latestCarsRecycleView.setAdapter(latestCarsCustomAdapter);
-        specialOffersRecycleView.setAdapter(offersCustomAdapter);
+        //specialOffersRecycleView.setAdapter(offersCustomAdapter);
 
 
         carsCustomAdapter.setCarsCardClickListener(this);
@@ -250,8 +265,6 @@ public class MainFragment extends Fragment implements  CarsCardClickListener{
 
 
     }
-
-
     private void loadLatestVehicles() {
 
         progressBarLatest.setVisibility(View.VISIBLE);
@@ -334,83 +347,7 @@ public class MainFragment extends Fragment implements  CarsCardClickListener{
 
 
     }
-
-    private void loadSpecialOffers() {
-        progressBarSpecial.setVisibility(View.VISIBLE);
-
-        //Get the Featured Cars
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLEndpoints.GateWayEndPointURL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-
-                        String status, message, customerID, fullName, mobileNumber, password, language, mobileNumberVerified, active;
-
-                        try {
-                            JSONObject obj = new JSONObject(response);
-                            status = obj.getString("status");
-                            message = obj.getString("message");
-
-                            Log.d("JSON Reply", obj.toString());
-
-                            if (status.equals("success")) {
-
-                                JSONArray jsonDataArray = obj.getJSONArray("data");
-
-                                for (int i = 0; i < jsonDataArray.length(); i++) {
-                                    JSONObject data = jsonDataArray.getJSONObject(i);
-
-                                    SpecialOffers tSpecialOffers =
-                                            new SpecialOffers(
-                                                    data.getInt("offerid"),
-                                                    data.getString("title"),
-                                                    data.getString("image"));
-
-
-                                    specialOffersList.add(tSpecialOffers);
-                                }
-
-                                offersCustomAdapter.notifyDataSetChanged();
-
-                                if (specialOffersList != null){
-                                    progressBarSpecial.setVisibility(View.GONE);
-                                }
-
-//                                customerID = data.getString("customerID");
-                            }
-
-                        } catch (Throwable tx) {
-                            Log.e("My App", "Could not parse malformed JSON: \"" + response + "\"");
-                        }
-
-                    }
-
-                },
-
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("Volley", error.toString());
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-//                String userMobileNumber = mobileText.getText().toString();
-//                String userPassword = passwordText.getText().toString();
-
-                params.put("action", "SPECIALOFERS");
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
-        requestQueue.add(stringRequest);
-
-
-    }
-
+    //private void loadSpecialOffers()
     @Override
     public void carsCardItemClicked(View view, int position, int vehicleID) {
 

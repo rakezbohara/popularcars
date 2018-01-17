@@ -2,27 +2,50 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-    <!--&lt;!&ndash; List View &ndash;&gt;-->
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/rvItems"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:background="#fff"-->
-       <!--/>-->
+    <!-- List View -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvGeneralLoan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"/>
 
 
+        <LinearLayout
+            android:layout_below="@+id/rvGeneralLoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/light_grey"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/icon_helpdesk" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Got Questions? Call us on"
+                android:textSize="14dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="+968 95889294"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/textHeadingColor"
+                android:textSize="18dp" />
+        </LinearLayout>
 
+    </RelativeLayout>
 
-<!--</RelativeLayout>-->
-
-    <WebView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/webview"></WebView>
 
 </ScrollView>

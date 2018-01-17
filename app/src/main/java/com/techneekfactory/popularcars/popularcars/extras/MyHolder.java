@@ -3,6 +3,7 @@ package com.techneekfactory.popularcars.popularcars.extras;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
 
     //OUR VIEWS
 
-    public TextView txtItem,txtItem1;
+    public WebView txtItem,txtItem1;
     private final Context context;
 
     private QuestionsModel currentItem;
@@ -29,8 +30,8 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
         super(itemView);
         context = itemView.getContext();
 
-        this.txtItem= (TextView) itemView.findViewById(R.id.question);
-        this.txtItem1= (TextView) itemView.findViewById(R.id.answer);
+        this.txtItem= (WebView) itemView.findViewById(R.id.question);
+        this.txtItem1= (WebView) itemView.findViewById(R.id.answer);
 
 
         itemView.setOnClickListener(this);
@@ -43,8 +44,8 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
     }
 
     public void bind(QuestionsModel questionsModel) {
-        txtItem.setText(questionsModel.getQuestion());
-        txtItem1.setText(questionsModel.getAnswer());
+        txtItem.loadDataWithBaseURL(null, questionsModel.getQuestion(), "text/html", "utf-8", null);
+        txtItem1.loadDataWithBaseURL(null, questionsModel.getAnswer(), "text/html", "utf-8", null);
         currentItem= questionsModel;
     }
 

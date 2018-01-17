@@ -16,13 +16,11 @@
         <activity
             android:name=".SplashScreen"
             android:label="@string/app_name">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".MainActivity"
@@ -46,11 +44,17 @@
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CarInfoActivity1" />
-        <activity android:name=".FullScreenActivity"
-            android:theme="@style/AppThemeNo">
-
-
-        </activity>
+        <activity
+            android:name=".FullScreenActivity"
+            android:theme="@style/AppThemeNo" />
+        <activity android:name=".Main2Activity" />
+        <activity
+            android:name=".FeaturedListActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LatestListActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
     </application>
 
 </manifest>

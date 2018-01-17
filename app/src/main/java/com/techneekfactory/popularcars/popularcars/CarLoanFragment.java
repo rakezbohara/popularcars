@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.techneekfactory.popularcars.popularcars.extras.QuestionsModel;
+import com.techneekfactory.popularcars.popularcars.extras.URLEndpoints;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -87,14 +88,13 @@ public class CarLoanFragment extends Fragment {
 
 
         //Get the Featured Cars
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://popularcarsoman.dev.techneek.in/appgateway/endPoint.php",
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLEndpoints.GateWayEndPointURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.d("JSON Reply", "Data is : "+response);
                         webLoadingProgressBar.dismiss();
-
                         String status, message, customerID, fullName, mobileNumber, password, language, mobileNumberVerified, active;
-
                         try {
                             JSONObject obj = new JSONObject(response);
                             status = obj.getString("status");
@@ -105,82 +105,25 @@ public class CarLoanFragment extends Fragment {
                             if (status.equals("success")) {
 
                                 JSONObject dataObj = obj.getJSONObject("data");
-
-
                                 JSONArray jsonDataArray = dataObj.getJSONArray("faqs");
-
                                 for (int i = 0; i < jsonDataArray.length(); i++) {
                                     JSONObject data = jsonDataArray.getJSONObject(i);
-
-//                                    Faq faqs =
-//                                            new Faq(data.getString("question"), data.getString("answer"));
-//
-//
-//                                    faqLists.add(faqs);
-//                                    faqLists.notify();
                                     String s = data.getString("question");
-                                    s = s.replace("<p>", "");
                                     String r = data.getString("answer");
-                                    r = r.replace("<p>", "");
-                                    r = r.replace("<b>"," ");
-                                    r = r.replace("</p>", "");
-                                    r = r.replace("</b>"," ");
-                                    r = r.replace("<ul>", "");
-                                    r = r.replace("</ul>"," ");
-                                    r = r.replace("<li>", "");
-                                    r = r.replace("</li>"," ");
-
                                     QuestionsModel questionsModel = new QuestionsModel(s,r );
                                     questionsModels.add(questionsModel);
-
-                                    System.out.println("From Model:" + questionsModels.get(i).getAnswer());
-
-
-                                    System.out.println("Question: " +data.getString("question")+ "  Answer: "+ data.getString("answer"));
+                                    Log.d("TAG", "Fetched data : "+questionsModels.get(i).getQuestion());
+                                    Log.d("TAG", "Fetched data : "+questionsModels.get(i).getAnswer());
+                                    //System.out.println("Question: " +data.getString("question")+ "  Answer: "+ data.getString("answer"));
                                 }
-
-
-//                                ques = new String[questions.size()];
-//                                questions.toArray(ques);
-//                                ans = new String[answers.size()];
-//                                answers.toArray(ans);
-
-
-
                                 Log.d("Array" , questionsModels.get(0).getAnswer()+ questionsModels.get(1).getQuestion());
-
-
                                 QuestionAnswerAdapter adapter = new QuestionAnswerAdapter(getContext(),questionsModels);
-
                                 adapter.notifyDataSetChanged();
                                 rvItems.setAdapter(adapter);
-
-
-
-//
-//                                listView.setAdapter(adapter);
-
-
-//                                adapter.notifyDataSetChanged();
-                                System.out.println("ques2" + ques[2] + "Answ4: " + ans[3] );
-
-
-//                                String[] faq_array = new String[faqLists.size()];
-//                                faqLists.toArray(faq_array);
-//                                textView.setText(String.valueOf( faq_array[1]));
-//                                System.out.println("Array: ");
-
-
-
-//                                Log.d("FaqList",  " -- " + faqLists.size());
-//                                customerID = data.getString("customerID");
-
-
-//                                textView.setText(response.toString());
                             }
 
                         } catch (Throwable tx) {
-                            Log.e("My App", "Could not parse malformed JSON: \"" + response + "\"");
+                            Log.d("My App", "Could not parse malformed JSON: \""+ tx.getMessage() + response + "\"");
                         }
 
                     }

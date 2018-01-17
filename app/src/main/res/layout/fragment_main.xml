@@ -12,25 +12,16 @@
         android:background="@color/scrollViewBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-
-
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-
+            android:orientation="vertical">
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/filterTabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabMode="fixed"
-                >
+                app:tabMode="fixed">
 
             </android.support.design.widget.TabLayout>
 
@@ -38,42 +29,13 @@
             <android.support.v4.view.ViewPager
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:id="@+id/filterViewPager"
-                >
+                android:id="@+id/filterViewPager">
 
             </android.support.v4.view.ViewPager>
 
 
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Special Offers"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/textHeadingColor"
-                android:textSize="18sp"
-                android:paddingLeft="10dp"/>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/specialOffersRecycleView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                card_view:cardCornerRadius="5dp"
-                card_view:cardElevation="5dp"
-                card_view:cardUseCompatPadding="true">
-
-            </android.support.v7.widget.RecyclerView>
-
-            <ProgressBar
-                android:id="@+id/progressBarSpecial"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"/>
 
 
             <android.support.constraint.ConstraintLayout
@@ -103,10 +65,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginRight="5dp"
                     android:layout_marginTop="2dp"
-                    android:text="See All >>"
-                    android:textColor="@color/logoRed"
+                    android:text="View All"
+                    android:textColor="#fff"
+                    android:background="@color/logoRed"
+                    android:padding="5dp"
                     card_view:layout_constraintRight_toRightOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent" />
             </android.support.constraint.ConstraintLayout>
@@ -123,7 +87,6 @@
                 card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="2dp"
                 card_view:cardUseCompatPadding="true">
-
             </android.support.v7.widget.RecyclerView>
 
             <ProgressBar
@@ -156,17 +119,19 @@
                     android:layout_marginTop="0dp" />
 
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView53"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="right"-->
-                    <!--android:layout_marginRight="15dp"-->
-                    <!--android:layout_marginTop="2dp"-->
-                    <!--android:text="See All >>"-->
-                    <!--android:textColor="@color/logoRed"-->
-                    <!--card_view:layout_constraintRight_toRightOf="parent"-->
-                    <!--card_view:layout_constraintTop_toTopOf="parent" />-->
+                <TextView
+                    android:id="@+id/seeAllLatestButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="2dp"
+                    android:text="View All"
+                    android:textColor="#fff"
+                    android:background="@color/logoRed"
+                    android:padding="5dp"
+                    card_view:layout_constraintRight_toRightOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent" />
             </android.support.constraint.ConstraintLayout>
 
 
@@ -180,7 +145,6 @@
                 card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="5dp"
                 card_view:cardUseCompatPadding="true">
-
             </android.support.v7.widget.RecyclerView>
 
             <ProgressBar
@@ -189,10 +153,35 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_centerInParent="true" />
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/light_grey"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/icon_helpdesk" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Got Questions? Call us on"
+                    android:textSize="14dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="+968 95889294"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/textHeadingColor"
+                    android:textSize="18dp" />
+            </LinearLayout>
         </LinearLayout>
-
-
     </ScrollView>
 
 

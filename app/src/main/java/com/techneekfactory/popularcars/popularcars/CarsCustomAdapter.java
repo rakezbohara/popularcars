@@ -33,6 +33,12 @@ public class CarsCustomAdapter extends RecyclerView.Adapter<CarsCustomAdapter.Vi
 
     }
 
+    public CarsCustomAdapter( List<Vehicles> vehiclesList) {
+
+        this.vehiclesList = vehiclesList;
+
+    }
+
     public CarsCustomAdapter(Context context, List<Vehicles> vehiclesList, Boolean horizontalOrientation) {
         this.context = context;
         this.vehiclesList = vehiclesList;

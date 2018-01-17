@@ -142,10 +142,22 @@
             card_view:cardUseCompatPadding="true"
             card_view:cardElevation="5dp"
             card_view:cardCornerRadius="5dp"
-
             android:layout_centerHorizontal="true">
 
         </android.support.v7.widget.RecyclerView>
+
+        <ProgressBar
+
+            android:id="@+id/browseCarsProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:textSize="20dp"
+            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_below="@id/filterPanel"
+            />
 
 
         <TextView
@@ -159,8 +171,36 @@
             android:gravity="center_horizontal"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-
             />
+        <LinearLayout
+            android:layout_below="@+id/browseCarsRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/light_grey"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/icon_helpdesk" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Got Questions? Call us on"
+                android:textSize="14dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="+968 95889294"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/textHeadingColor"
+                android:textSize="18dp" />
+        </LinearLayout>
     </RelativeLayout>
 
 </ScrollView>

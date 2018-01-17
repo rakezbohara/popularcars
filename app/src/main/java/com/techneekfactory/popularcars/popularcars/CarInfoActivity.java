@@ -46,7 +46,7 @@ import technolifestyle.com.imageslider.FlipperView;
 
 public class CarInfoActivity extends AppCompatActivity {
 
-    private int VehicleID = 0;
+    public  int VehicleID;
     private List<CarImages> carImagesList;
 
 //    private RecyclerView recyclerView;
@@ -97,6 +97,16 @@ public class CarInfoActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         VehicleID = bundle.getInt("vehicleID");
+
+        try{
+            if (VehicleID < 1){
+
+            } else{
+                Log.d("VehicleID", "onCreate: "+ VehicleID);
+            }
+        } catch (Error e){
+
+        }
 
 
         bodyTypeTV = (TextView) findViewById(R.id.bodyTypeTV);
@@ -166,8 +176,8 @@ public class CarInfoActivity extends AppCompatActivity {
 
 
 
-
         getVehicleInfoFromServer();
+
 
 
 
@@ -196,6 +206,7 @@ public class CarInfoActivity extends AppCompatActivity {
 
         basicFeaturesListView = (ListView) findViewById(R.id.basicFeaturesListView);
         comfortFeaturesListView = (ListView) findViewById(R.id.comfortFeaturesListView);
+
 
 
         //Enquiry Form
@@ -351,6 +362,8 @@ public class CarInfoActivity extends AppCompatActivity {
                                 JSONArray jsonBasicFeatureArray = obj.getJSONArray("basicFeatures");
                                 JSONArray jsonComfortFeatureArray = obj.getJSONArray("comfortFeatures");
 
+                                Log.d("basic", "onResponse: " + jsonBasicFeatureArray );
+
 
                                 JSONObject data = jsonDataArray.getJSONObject(0);
 
@@ -384,7 +397,7 @@ public class CarInfoActivity extends AppCompatActivity {
 
 
 
-                                carImagesCustomAdapter.notifyDataSetChanged();
+
 
                                 if (carImagesList.size() > 0 ){
                                     Log.d("imageUrl", carImagesList.get(0).getImage().toString());
@@ -397,6 +410,7 @@ public class CarInfoActivity extends AppCompatActivity {
                                 for (int i = 0; i < jsonBasicFeatureArray.length(); i++) {
                                     JSONObject item = jsonBasicFeatureArray.getJSONObject(i);
                                     items.add(item.getString("basicfeature"));
+                                    Log.d("Basicf", "onResponse: "+item.getString("basicfeature" ).toString());
                                 }
                                 updateBasicFeatures();
 
@@ -408,6 +422,7 @@ public class CarInfoActivity extends AppCompatActivity {
                                 }
 
                                 updateComfortFeatures();
+                                carImagesCustomAdapter.notifyDataSetChanged();
                             }
 
 
@@ -445,6 +460,7 @@ public class CarInfoActivity extends AppCompatActivity {
     public void updateBasicFeatures() {
 
         BulletListAdapter bulletListAdapterBasicFeatures = new BulletListAdapter(this, items);
+        Log.d("items", "updateBasicFeatures: "+ items);
         basicFeaturesListView.setAdapter(bulletListAdapterBasicFeatures);
         bulletListAdapterBasicFeatures.notifyDataSetChanged();
         Utils.setListViewHeightBasedOnChildren(basicFeaturesListView);

@@ -252,7 +252,7 @@ public class SearchcarActivity extends AppCompatActivity implements CarsCardClic
 //        String type = "0";
 //        String brand = "0";
 //        String bodytype = "0";
-        String featuredString = bundle.getString("FEATUREDCARS");
+//        String featuredString = bundle.getString("FEATUREDCARS");
 //        type = bundle.getString("type");
 //        brand = bundle.getString("brand");
 //        bodytype = bundle.getString("bodyType");
@@ -271,13 +271,13 @@ public class SearchcarActivity extends AppCompatActivity implements CarsCardClic
 ////            budgetSpinner.setAdapter(brandKVAdapter);
 //        }
 
-        try {
-            if (featuredString != null) {
-                showFeatured = true;
-            }
-        } catch (Error ignored) {
-
-        }
+//        try {
+//            if (featuredString != null) {
+//                showFeatured = true;
+//            }
+//        } catch (Error ignored) {
+//
+//        }
 
 
         carBrandID = bundle.getString("brandID");

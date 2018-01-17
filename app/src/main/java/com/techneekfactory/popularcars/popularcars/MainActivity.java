@@ -54,8 +54,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setLogo(R.drawable.popular_logo_small);
-        toolbar.setTitle("");
+        //toolbar.setLogo(R.drawable.popular_logo_small);
+        toolbar.setTitle("Popular");
+        toolbar.setSubtitle("Pre-owned Cars");
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -73,10 +74,8 @@ public class MainActivity extends AppCompatActivity
         ft.replace(R.id.fragment_container, mainFragment);
         ft.commit();
 
-
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-
         if(networkInfo != null && networkInfo.isConnected())
         {
             loadFeaturedVehicles();
@@ -131,10 +130,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         displaySelectedScreen(id);
-
 //        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 //        drawer.closeDrawer(GravityCompat.START);
-
         return true;
     }
 
@@ -153,12 +150,12 @@ public class MainActivity extends AppCompatActivity
                 // Start NewActivity.class
                 Intent myIntent = new Intent(this, SearchcarActivity.class);
                 myIntent.putExtra("ALLVEHICLES", "");
-
-
                 startActivity(myIntent);
-
                 break;
 
+            case R.id.nav_special_offer:
+                fragment = new SpecialOfferFragment();
+                break;
 
             case R.id.nav_inhousefinance:
                 fragment = new WebViewFragment();
@@ -217,6 +214,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new CarLoanFragment();
                 break;
 
+
         }
 
         if (fragment != null) {
@@ -233,8 +231,6 @@ public class MainActivity extends AppCompatActivity
     private void loadFeaturedVehicles() {
 
         vehiclesList = new ArrayList<>();
-
-
         //Get the Featured Cars
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLEndpoints.GateWayEndPointURL,
                 new Response.Listener<String>() {

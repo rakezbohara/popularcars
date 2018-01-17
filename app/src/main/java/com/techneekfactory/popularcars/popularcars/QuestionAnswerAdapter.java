@@ -5,6 +5,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,8 +73,9 @@ ArrayList<QuestionsModel> questionsModels;
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
         holder.bind(questionsModels.get(position));
-        holder.txtItem.setText(questionsModels.get(position).getQuestion());
-        holder.txtItem1.setText(questionsModels.get(position).getAnswer());
+        holder.txtItem.loadDataWithBaseURL(null, questionsModels.get(position).getQuestion(), "text/html", "utf-8", null);
+        holder.txtItem1.loadDataWithBaseURL(null, questionsModels.get(position).getAnswer(), "text/html", "utf-8", null);
+
 
 
     }

@@ -5,5 +5,5 @@ package com.techneekfactory.popularcars.popularcars.extras;
  */
 
 public class URLEndpoints {
-    public static final String GateWayEndPointURL = "http://popularcarsoman.dev.techneek.in/appgateway/endPoint.php";
+    public static final String GateWayEndPointURL = "http://www.popularcarsoman.com/appgateway/endPoint.php";
 }

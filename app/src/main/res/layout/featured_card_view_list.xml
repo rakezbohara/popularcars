@@ -1,0 +1,88 @@
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/carsCardView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardCornerRadius="8dp"
+    android:layout_marginBottom="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/carImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+
+            android:layout_marginTop="8dp"
+            android:clickable="false"
+            android:scaleType="fitCenter"
+            />
+
+        <TextView
+            android:id="@+id/carTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="Nissan Altima"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_below="@id/carImage"
+            />
+
+
+        <TextView
+            android:id="@+id/carYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="1dp"
+            android:text="2013"
+            android:layout_below="@id/carTitle"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+           />
+
+        <TextView
+            android:id="@+id/carPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="6dp"
+            android:text="28000"
+            android:textColor="@color/logoRed"
+            android:textSize="18sp"
+            android:layout_below="@id/carYear"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+             />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="2dp"
+            android:text="OMR"
+            android:textColor="@color/logoRed"
+            android:layout_below="@id/carPrice"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+
+            android:paddingBottom="1dp"
+           />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

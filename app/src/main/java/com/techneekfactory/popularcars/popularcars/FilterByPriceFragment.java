@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -63,7 +64,7 @@ public class FilterByPriceFragment extends Fragment {
 
 
     public ProgressBar progressBar;
-
+    ImageView arrowDown;
 
     public FilterByPriceFragment() {
         // Required empty public constructor
@@ -76,7 +77,8 @@ public class FilterByPriceFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_filter_by_brand, container, false);
         progressBar = (ProgressBar) v.findViewById(R.id.progressBarBrandGrid);
         progressBar.setVisibility(View.GONE);
-
+        arrowDown = v.findViewById(R.id.price_grid_arrow_down);
+        arrowDown.setVisibility(View.VISIBLE);
 
         PriceGridAdapter adapter = new PriceGridAdapter(getContext(), priceLabels);
         grid = (GridView) v.findViewById(R.id.brandGridView);
@@ -100,9 +102,19 @@ public class FilterByPriceFragment extends Fragment {
 
                 myIntent.putExtra("budget", String.valueOf(priceLabelValues[+position]));
 
+                myIntent.putExtra("priceLabel", String.valueOf(priceLabels[+position]));
+                myIntent.putExtra("type", "price");
+
+
                 startActivity(myIntent);
 
 
+            }
+        });
+        arrowDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                grid.smoothScrollToPosition(priceLabels.length);
             }
         });
 
