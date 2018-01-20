@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new WebViewFragment();
                 Bundle fBundle = new Bundle();
 //                fBundle.putString("URL", "http://popularcarsoman.dev.techneek.in/app_page_dynamic.php?pid=1");
-                fBundle.putString("URL", "http://popularcarsoman.dev.techneek.in/app_page_inHouseFinance.php");
+                fBundle.putString("URL", URLEndpoints.GateWayEndPointURL+"/app_page_inHouseFinance.php");
                 fragment.setArguments(fBundle);
                 break;
 
@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new WebViewFragment();
                 Bundle gBundle = new Bundle();
 //                fBundle.putString("URL", "http://popularcarsoman.dev.techneek.in/app_page_dynamic.php?pid=1");
-                gBundle.putString("URL", "http://popularcarsoman.dev.techneek.in/app_page_buyers_guide.php?slug=tips-for-buying");
+                gBundle.putString("URL", URLEndpoints.GateWayEndPointURL+"/app_page_buyers_guide.php?slug=tips-for-buying");
                 fragment.setArguments(gBundle);
                 break;
 
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new WebViewFragment();
                 Bundle hBundle = new Bundle();
 //                fBundle.putString("URL", "http://popularcarsoman.dev.techneek.in/app_page_dynamic.php?pid=1");
-                hBundle.putString("URL", "http://popularcarsoman.dev.techneek.in/app_page_buyers_guide.php?slug=inspection");
+                hBundle.putString("URL", URLEndpoints.GateWayEndPointURL+"/app_page_buyers_guide.php?slug=inspection");
                 fragment.setArguments(hBundle);
                 break;
 
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new WebViewFragment();
                 Bundle iBundle = new Bundle();
 //                fBundle.putString("URL", "http://popularcarsoman.dev.techneek.in/app_page_dynamic.php?pid=1");
-                iBundle.putString("URL", "http://popularcarsoman.dev.techneek.in/app_page_buyers_guide.php?slug=test-drive");
+                iBundle.putString("URL", URLEndpoints.GateWayEndPointURL+"/app_page_buyers_guide.php?slug=test-drive");
                 fragment.setArguments(iBundle);
                 break;
 
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new WebViewFragment();
                 Bundle jBundle = new Bundle();
 //                fBundle.putString("URL", "http://popularcarsoman.dev.techneek.in/app_page_dynamic.php?pid=1");
-                jBundle.putString("URL", "http://popularcarsoman.dev.techneek.in/app_page_buyers_guide.php?slug=close-the-deal");
+                jBundle.putString("URL", URLEndpoints.GateWayEndPointURL+"/app_page_buyers_guide.php?slug=close-the-deal");
                 fragment.setArguments(jBundle);
                 break;
 

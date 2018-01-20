@@ -15,6 +15,7 @@ import android.webkit.WebViewClient;
 import android.widget.TabHost;
 
 import com.techneekfactory.popularcars.popularcars.R;
+import com.techneekfactory.popularcars.popularcars.extras.URLEndpoints;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -109,7 +110,7 @@ public class ThirdPartyFinanceFragment extends Fragment {
 
         });
 
-        banksWebView.loadUrl("http://popularcarsoman.dev.techneek.in/appfinance/banks");
+        banksWebView.loadUrl(URLEndpoints.GateWayEndPointURL+"/appfinance/banks");
         banksWebView.reload();
 
 
@@ -150,7 +151,7 @@ public class ThirdPartyFinanceFragment extends Fragment {
             }
         });
 
-        islamicWebView.loadUrl("http://popularcarsoman.dev.techneek.in/appfinance/islamic-banking");
+        islamicWebView.loadUrl(URLEndpoints.GateWayEndPointURL+"/appfinance/islamic-banking");
         islamicWebView.reload();
 
 
@@ -192,7 +193,7 @@ public class ThirdPartyFinanceFragment extends Fragment {
 
         });
 
-        financeWebView.loadUrl("http://popularcarsoman.dev.techneek.in/appfinance/finance-companies");
+        financeWebView.loadUrl(URLEndpoints.GateWayEndPointURL+"/appfinance/finance-companies");
         financeWebView.reload();
 
 
