@@ -102,7 +102,9 @@ public class FlipperView {
         try {
             autoSliderImage.setScaleType(getScaleType());
             if (imageUrl != null) {
-                Picasso.with(context).load(Uri.parse(imageUrl))
+                Picasso.with(context)
+                        .load(Uri.parse(imageUrl))
+                        .placeholder(R.mipmap.car_image_loading)
                         .into(autoSliderImage);
             } else {
                 Picasso.with(context).load(imageRes).into(autoSliderImage);

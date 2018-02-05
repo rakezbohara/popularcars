@@ -14,7 +14,7 @@ public class CarImages {
 
     }
 
-        public String getImage() {
+    public String getImage() {
         return image;
     }
 
